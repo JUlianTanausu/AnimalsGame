@@ -318,7 +318,7 @@ public class Camera2BasicFragment extends Fragment
                 @Override
                 public void run() {
                     messageContainer.setVisibility(View.VISIBLE);
-                    message.setText("Train: " + messageText);
+                    message.setText(messageText);
                 }
             });
         }
@@ -743,7 +743,7 @@ public class Camera2BasicFragment extends Fragment
 
         Log.d("Classify", "------------------------------" + " Training: " + animalCategory);
 
-
+        runMessage("Train: " +animalCategory);
         //showToast("Train: " + animalCategory);
 
         knn.fit(results, animalCategory.getId());
@@ -799,6 +799,9 @@ public class Camera2BasicFragment extends Fragment
         AnimalCategory animalCategoryPrediction = AnimalCategory.values()[category_id];
 
         Log.d("Classify", "------------------------------" + "Clasifying: " + animalCategoryPrediction);
+        if(!trainClassifier) {
+            runMessage(animalCategoryPrediction.toString());
+        }
 
         // showToast("Prediction: " + animalCategoryPrediction);
         bitmap.recycle();
@@ -898,8 +901,8 @@ public class Camera2BasicFragment extends Fragment
     }
 
 
-    private void runMessage(AnimalCategory animal){
-        messageText = animal.toString();
+    private void runMessage(String animal){
+        messageText = animal;
         showMessage();
     }
 
@@ -908,22 +911,22 @@ public class Camera2BasicFragment extends Fragment
         switch (view.getId()) {
             case R.id.start_monkey: {
                 currentAnimalTraining = AnimalCategory.MONKEY;
-                runMessage(currentAnimalTraining);
+                runMessage("Train: " +currentAnimalTraining);
                 break;
             }
             case R.id.start_elephand: {
                 currentAnimalTraining = AnimalCategory.ELEPHANT;
-                runMessage(currentAnimalTraining);
+                runMessage("Train: "+currentAnimalTraining);
                 break;
             }
             case R.id.start_chiken: {
                 currentAnimalTraining = AnimalCategory.CHICKEN;
-                runMessage(currentAnimalTraining);
+                runMessage("Train: "+currentAnimalTraining);
                 break;
             }
             case R.id.start_kangaroo: {
                 currentAnimalTraining = AnimalCategory.KANGAROO;
-                runMessage(currentAnimalTraining);
+                runMessage("Train: "+currentAnimalTraining);
                 break;
             }
             default:  // stop training button

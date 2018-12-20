@@ -229,7 +229,7 @@
         android:layout_height="33dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="38dp"
         android:background="@color/background_grey_80"
         android:gravity="center"
         android:orientation="vertical"
