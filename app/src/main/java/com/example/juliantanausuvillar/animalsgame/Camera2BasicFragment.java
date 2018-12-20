@@ -337,7 +337,7 @@ public class Camera2BasicFragment extends Fragment
         }
     }
 
-    private void chnageImageClassifyAnimal() {
+    private void classify() {
         final Activity activity = getActivity();
         if (activity != null) {
             activity.runOnUiThread(new Runnable() {
@@ -785,6 +785,8 @@ public class Camera2BasicFragment extends Fragment
         if (!runClassifier) {
             return;
         }
+
+        // de aki pa bajo en hilo
         Bitmap bitmap =
                 mTextureView.getBitmap(TensorFlowImageClassifier.DIM_IMG_SIZE_X, TensorFlowImageClassifier.DIM_IMG_SIZE_Y);
         float[] results = classifier.classifyFrame(bitmap);
@@ -931,7 +933,7 @@ public class Camera2BasicFragment extends Fragment
             }
             default:  // stop training button
                 currentAnimalTraining = null;
-                hideMessageText();
+                //hideMessageText();
         }
 
         synchronized (lock) {
